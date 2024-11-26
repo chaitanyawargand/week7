@@ -15,66 +15,55 @@ Write a main() function which populates the array bank with values for 5 custome
 should take a withdrawal request from the user (i.e., read values for account number, amount), and call
 the transaction function, and thereby print if it is a valid transaction. If valid, it should print the balance
 after the withdrawal.*/
-#include <stdio.h>
+#include<stdio.h>
 struct customer{
     long int accountno;
     char name[50];
     long int balance;
  }s[3];
 int transaction(long int account_number, int request_type, long int *balance, int amount);
-int main() {
-    int request_type, amount, w, d;
+int main(){
+    int request_type,amount,w,d;
     for(int i=0;i<3;i++){
-        printf("Enter customer %d details:\n", i + 1);
-        printf("Name: ");
-        getchar();
-        scanf("%[^\n]s", s[i].name);
-        printf("Account Number: ");
-        scanf("%ld", &s[i].accountno);
-        printf("Balance: ");
-        scanf("%ld", &s[i].balance);
+    printf("Enter customer %d details:\n", i + 1);
+    printf("Name: ");
+	getchar();
+    scanf("%[^\n]s", s[i].name);
+     printf("Account Number: ");
+     scanf("%ld", &s[i].accountno);
+     printf("Balance: ");
+     scanf("%ld", &s[i].balance);
     }
-    printf("Enter customer number (0 to 9): ");
-    int k;
-    scanf("%d",&k);
-    printf("Request type (withdrawal: 1, deposit: 0): ");
-    scanf("%d",&request_type);
-    if (request_type==1) {
-        printf("Enter the amount for withdrawal: ");
-        scanf("%d",&amount);
-        w=transaction(s[k].accountno, request_type, &(s[k].balance), amount);
-        if (w == 1) {
-        printf("Transaction successful! name:%s\tNew balance: %ld\n",s[k].name,s[k].balance);
-        } else {
-        printf("Transaction unsuccessful.name:%s\tCurrent balance: %ld\n",s[k].name,s[k].balance + amount);
-        }
+printf("Enter customer number(0to9): ");
+int k;
+scanf("%d",&k);
+printf("Request type (withdrawal: 1, deposit: 0): ");
+scanf("%d",&request_type);
+    if(request_type==1){
+    printf("Enter the amount for withdrawal: ");
+     scanf("%d",&amount);
+    w=transaction(s[k].accountno, request_type, &(s[k].balance), amount);
+    if(w==1){
+    printf("Transaction successful! name:%s\tNew balance: %ld\n",s[k].name,s[k].balance);
+    }else
+     printf("Transaction unsuccessful.name:%s\tCurrent balance: %ld\n",s[k].name,s[k].balance + amount);
     }
-    else if (request_type==0){
-        printf("Enter the amount to deposit: ");
-        scanf("%d", &amount);
-        d=transaction(s[k].accountno, request_type, &(s[k].balance), amount);
-        if (d == 1) {
-        printf("Transaction successful.name;%s\tNew balance: %ld\n",s[k].name,s[k].balance);
-        }
-    }
-
-    return 0;
-}
-
+    else if(request_type==0){
+printf("Enter the amount to deposit: ");
+scanf("%d", &amount);
+d=transaction(s[k].accountno, request_type, &(s[k].balance), amount);
+ if(d==1){
+     printf("Transaction successful.name;%s\tNew balance: %ld\n",s[k].name,s[k].balance);} }
+ return 0;}
 int transaction(long int account_number, int request_type, long int *balance, int amount) {
-    if (request_type==1) {
+    if(request_type==1){
         *balance-=amount;
-        if (*balance<0) {
-            return 0;
-        } else {
-            return 1;
-        }
+    if(*balance<0){
+    return 0; }
+    else {
+    return 1;}
     }
-
-    if (request_type == 0) { 
-        *balance += amount;
-        return 1;
-    }
-
-    return -1; 
+    if(request_type==0){ 
+    *balance+=amount;
+    return 1;}
 }
