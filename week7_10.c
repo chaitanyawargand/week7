@@ -1,6 +1,6 @@
 /*Write a C program to find the Greatest Common Divisor (GCD) of two numbers using recursion.*/
 #include<stdio.h>
-int gcd(int a,int b,int n);
+int gcd(int,int,int);
 int main()
 { int a,b,n;
     printf("enter the first number: ");
